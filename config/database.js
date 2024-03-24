@@ -1,0 +1,15 @@
+const mysql = require('mysql');
+// create connection to database
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'hausport'
+});
+// Mở kết nối
+db.connect(error => {
+    if (error) throw error;
+    console.log('Successfully connected to the database.');
+});
+
+module.exports = db;

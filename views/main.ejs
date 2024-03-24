@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('layouts/navbar'); %>
+        <%- include('layouts/header'); %>
+            <section>
+                <div class="wrap-product-type ">
+                    <div class="container section-title-container ">
+                        <h3 class="section-title-bold section-title-bold-center "><span class="section-title-main ">Sản phẩm mới nhất</span><b></b></h3>
+                    </div>
+                </div>
+            </section>
+            <main>
+                <div class="product">
+                    <% data.forEach(product=> { %>
+                        <div class="product-item">
+                            <h3 class="product-title">
+                                <%= product.title %>
+                            </h3>
+                            <div class="product-img">
+                                <img src="/images/<%=product.imageURL%>" alt="">
+                            </div>
+                            <div class="product-price">
+                                $
+                                <%= product.price %>
+                            </div>
+                            <p class="product-desc">
+                                <%= product.description %>
+                            </p>
+                            <button class="btn-add-cart">Add to cart</button>
+                        </div>
+                        <% }) %>
+                </div>
+                <ul class="pagination">
+                    <% let prevPage=(page<totalPage) ? '' : `/?page=${page - 1}`%>
+                        <li><a href="<%= prevPage %>">Prev</a></li>
+                        <% let nextPage=(page>= totalPage) ? '' : `/?page=${page + 1}` %>
+
+                            <% for( let i=1; i <=totalPage; i++ ) { %>
+                                <% let active=page===i && 'active' %>
+
+                                    <li>
+                                        <a class="<%= active %>" href="/?page=<%= i %>">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                        <li><a href="<%= nextPage %>">Next</a></li>
+                </ul>
+            </main>
+            <a href="#" class="show-more">Xem thêm</a>
+            <section>
+                <div class="container section-title-container">
+                    <h2 class="section-title section-title-center"><b></b><span class="section-title-main">TIN TỨC BÀI VIẾT</span><b></b></h2>
+                </div>
+                <div class="pro-new">
+                    <div class="new-container">
+                        <img src="https://hplsport.com/wp-content/uploads/2023/03/Banner-Footer-01.jpg" alt="">
+                    </div>
+                </div>
+            </section>
+            <%- include('layouts/footer');  %>
+</body>
+
+</html>
