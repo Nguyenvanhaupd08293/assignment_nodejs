@@ -4,7 +4,7 @@ const { getHomePage } = require('../controllers/homController');
 const { getListProduct, getProduct, formProduct, postCreateProduct, formUpdate, updateProduct, deleteProduct } = require('../controllers/productCtrl')
     // router.get('/', getHomePage);
 router.get('/', getProduct);
-router.get('/listProduct', getListProduct);
+router.get('/addproduct', getListProduct);
 router.get('/addproduct', formProduct);
 const multer = require('multer');
 const storage = multer.diskStorage({

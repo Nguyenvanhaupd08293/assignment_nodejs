@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <%- include('layouts/navbar'); %>
-        <%- include('layouts/header'); %>
-            <section>
-                <div class="wrap-product-type ">
-                    <div class="container section-title-container ">
-                        <h3 class="section-title-bold section-title-bold-center "><span class="section-title-main ">Sản phẩm mới nhất</span><b></b></h3>
-                    </div>
+<%- include('main_page/navbar'); %>
+    <%- include('main_page/header'); %>
+        <section>
+            <div class="wrap-product-type ">
+                <div class="container section-title-container ">
+                    <h3 class="section-title-bold section-title-bold-center "><span class="section-title-main ">Sản phẩm mới nhất</span><b></b></h3>
                 </div>
-            </section>
-            <main>
+            </div>
+        </section>
+        <!-- <main>
                 <div class="product">
                     <% data.forEach(product=> { %>
                         <div class="product-item">
@@ -54,19 +44,37 @@
                                     <% } %>
                                         <li><a href="<%= nextPage %>">Next</a></li>
                 </ul>
-            </main>
-            <a href="#" class="show-more">Xem thêm</a>
-            <section>
-                <div class="container section-title-container">
-                    <h2 class="section-title section-title-center"><b></b><span class="section-title-main">TIN TỨC BÀI VIẾT</span><b></b></h2>
-                </div>
-                <div class="pro-new">
-                    <div class="new-container">
-                        <img src="https://hplsport.com/wp-content/uploads/2023/03/Banner-Footer-01.jpg" alt="">
+            </main> -->
+        <section class="pro-conatiner">
+            <div class="product-list wraper" id="listProductindex">
+                <% data.forEach(product=> { %>
+                    <div class="product-item">
+                        <a href="" class="product-link">
+                            <img src="/images/<%=product.imageURL%>" alt="" class="product-img">
+                            <img src="/images/<%=product.imageURL1%>" alt="" class="product-img-hover">
+                        </a>
+                        <div class="product-price">
+                            <span class="new-price"> $
+                            <%= product.price %></span>
+                        </div>
+                        <div class="product-name">
+                            <a href="">
+                                <%= product.title %>
+                            </a>
+                        </div>
                     </div>
+                    <% }) %>
+            </div>
+        </section>
+        <a href="#" class="show-more">Xem thêm</a>
+        <section>
+            <div class="container section-title-container">
+                <h2 class="section-title section-title-center"><b></b><span class="section-title-main">TIN TỨC BÀI VIẾT</span><b></b></h2>
+            </div>
+            <div class="pro-new">
+                <div class="new-container">
+                    <img src="https://hplsport.com/wp-content/uploads/2023/03/Banner-Footer-01.jpg" alt="">
                 </div>
-            </section>
-            <%- include('layouts/footer');  %>
-</body>
-
-</html>
+            </div>
+        </section>
+        <%- include('main_page/footer');  %>

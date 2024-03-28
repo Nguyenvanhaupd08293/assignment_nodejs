@@ -3,6 +3,7 @@ const express = require('express');
 var multer = require('multer');
 
 const configViewEngine = (app) => {
+
     app.set("view engine", "ejs");
     path.join()
     app.set("views", path.join('./', 'views'));

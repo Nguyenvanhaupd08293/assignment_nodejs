@@ -3,11 +3,16 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const configViewEngine = require('./config/viewEngine')
-const webRouter = require('./routes/web');
+    // const productRouter = require('./routes/product');
+const categoryRouter = require('./routes/category');
+console.log('categoryRouter', categoryRouter)
+    //khai bao Router
+    // Sử dụng productRouter cho tất cả các tuyến đường bắt đầu với '/products'
+    // app.use('/', productRouter);
+    // Sử dụng categoryRouter cho tất cả các tuyến đường bắt đầu với '/categories'
+app.use('/', categoryRouter);
 //khai bao sử dụng template Engine
 configViewEngine(app);
-//khai bao Router
-app.use('/', webRouter);
 // Sử dụng body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

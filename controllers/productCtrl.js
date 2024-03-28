@@ -1,5 +1,5 @@
 const db = require('../config/database');
-const formProduct = (req, res) => res.render('add_product');
+const formProduct = (req, res) => res.render('admin/product/add_product');
 const getProduct = (req, res) => {
     const limit = 4;
     const page = req.query.page ? parseInt(req.query.page) : 1;
@@ -18,7 +18,7 @@ const getProduct = (req, res) => {
 const getListProduct = (req, res) => {
     db.query('SELECT * FROM products', (error, data, fields) => {
         if (error) throw error;
-        res.render('listProducts', { data });
+        res.render('admin/product/add_product', { data });
     });
 };
 const postCreateProduct = (req, res) => {
@@ -27,15 +27,17 @@ const postCreateProduct = (req, res) => {
     let price = req.body.priceProduct;
     let description = req.body.txtdesc;
     let nameImage = file.filename;
+    let nameImage1 = file.filename;
     let product = {
         title: title,
         price: price,
         description: description,
         imageURL: nameImage,
+        imageURL1: nameImage1,
     }
     db.query('insert into products SET ?', product, (err, data) => {
         if (err) throw err;
-        res.redirect('/listproduct');
+        res.redirect('/addproduct');
     })
 
 };
